@@ -107,7 +107,7 @@ async def _generate(self, synapse: bt.Synapse) -> bt.Synapse:
         hash_folder_name = hashlib.sha256(prompt.encode()).hexdigest()
         print(f"{prompt} : {hash_folder_name}\n")
         
-        abs_path = os.path.join('/workspace/DB', hash_folder_name)
+        abs_path = os.path.join('/workspace/PremiumDB', hash_folder_name)
         if not os.path.exists(abs_path):
             # set_status(self, "generation")
             print("~~~~~~~~~~~~~~~~~Couldn't find the folder of image and 3D model. {abs_path}~~~~~~~~~~~~~~~~~\n\
@@ -115,7 +115,7 @@ async def _generate(self, synapse: bt.Synapse) -> bt.Synapse:
             # extra_prompts = "Angled front view, solid color background, 3d model"
             extra_prompts = "Angled front view, solid color background, high quality, detailed textures, realistic lighting, emphasis on form and depth, suitable for 3D rendering."
             enhanced_prompt = f"{prompt}, {extra_prompts}"
-            url = urllib.parse.urljoin(self.config.generation.endpoint, "/generate_from_text/")
+            url = urllib.parse.urljoin(self.config.generation.endpoint, "/simple_generate_from_text/")
             bt.logging.info(f"generation endpoint: {url}")
             result = await __generate_from_text(gen_url=url, timeout=170, prompt=prompt, output_dir = abs_path)
             set_status(self)

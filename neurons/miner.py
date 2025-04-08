@@ -36,9 +36,9 @@ class Miner(BaseMinerNeuron):
         with open(f"{self.config.miner_id}.txt", "a") as file:
             file.write(f"{uid}-{synapse.prompt_text}\n")
 
-        # Atelion: Smoothly handle synapses sent from Yuma
-        if synapse.dendrite.hotkey == "5HEo565WAy4Dbq3Sv271SAi7syBSofyfhhwRNjFNSM2gP9M2":
-            return synapse
+        # # Atelion: Smoothly handle synapses sent from Yuma
+        # if synapse.dendrite.hotkey == "5HEo565WAy4Dbq3Sv271SAi7syBSofyfhhwRNjFNSM2gP9M2":
+        #     return synapse
         bt.logging.info(f"-----------Miner ID is {self.config.miner_id}----------")
         if not check_status(self):
             bt.logging.warning("Couldn't perform the Generation right now.")
@@ -66,13 +66,13 @@ class Miner(BaseMinerNeuron):
                 prompt = synapse.prompt_text
                 prompt = prompt.strip()
                 hash_folder_name = hashlib.sha256(prompt.encode()).hexdigest()
-                abs_path = os.path.join('/workspace/DB', hash_folder_name)
+                abs_path = os.path.join('/workspace/PremiumDB', hash_folder_name)
                 
                 if synapse.prompt_text == prompt_on_process and not os.path.isfile(os.path.join(abs_path, 'mesh.glb')) :
-                    time.sleep(70)
+                    time.sleep(10)
                 
                 paths = {
-                    "prev": os.path.join(abs_path, 'img.jpg'),
+                    "prev": os.path.join(abs_path, 'img.jpeg'),
                     "glb": os.path.join(abs_path, 'mesh.glb'),
                 }
                 

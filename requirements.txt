@@ -1,6 +1,7 @@
-# pip install git+https://github.com/openai/CLIP.git
-# pip install git+https://github.com/facebookresearch/pytorch3d.git
-bittensor==8.5.1
+bittensor==9.1.0
+bt-decode==v0.5.0
+bittensor-cli==9.0.2
+async-substrate-interface==1.0.5
 starlette>=0.30.0
 pydantic>=2
 rich>=13
@@ -12,5 +13,6 @@ httpx>=0.23.0
 python-dotenv>=1.0.0
 boto3>=1.26.0
 wandb
-aiohttp
-
+sentence-transformers==3.4.1
+SciPy==1.15.2
+pytesseract
