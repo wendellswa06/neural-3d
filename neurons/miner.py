@@ -61,15 +61,17 @@ class Miner(BaseMinerNeuron):
                 r.set("prompt", synapse.prompt_text)
             if db_size != 0:
                 prompt_on_process = r.get("prompt").decode('utf-8')
-                bt.logging.info(f"Former: {prompt_on_process}\nLater: {synapse.prompt_text}\n")
+                bt.logging.info(f"Former: {prompt_on_process}")
+                bt.logging.info(f"Later: {synapse.prompt_text}")
                 
                 prompt = synapse.prompt_text
                 prompt = prompt.strip()
                 hash_folder_name = hashlib.sha256(prompt.encode()).hexdigest()
-                abs_path = os.path.join('/workspace/PremiumDB', hash_folder_name)
+                db_name = "FuckDB"
+                abs_path = os.path.join(f'/workspace/{db_name}', hash_folder_name)
                 
                 if synapse.prompt_text == prompt_on_process and not os.path.isfile(os.path.join(abs_path, 'mesh.glb')) :
-                    time.sleep(10)
+                    time.sleep(5)
                 
                 paths = {
                     "prev": os.path.join(abs_path, 'img.jpeg'),
